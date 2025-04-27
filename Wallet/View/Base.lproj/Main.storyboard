@@ -91,13 +91,29 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/29" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2d-fh-oC4">
+                                                        <rect key="frame" x="317" y="158.66666666666669" width="43" height="20.333333333333343"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiM-tb-ZQo">
+                                                        <rect key="frame" x="246" y="138.66666666666669" width="114" height="20.333333333333343"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="8px-LL-gmQ" firstAttribute="top" secondItem="gbb-ia-So9" secondAttribute="top" constant="3" id="45K-jo-Hqz"/>
+                                                    <constraint firstItem="o2d-fh-oC4" firstAttribute="trailing" secondItem="gbb-ia-So9" secondAttribute="trailing" id="CWG-Rm-msz"/>
                                                     <constraint firstItem="q9m-17-7Wy" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gbb-ia-So9" secondAttribute="trailing" constant="20" symbolic="YES" id="PIa-CT-A8V"/>
                                                     <constraint firstItem="doG-zc-6nE" firstAttribute="top" secondItem="8px-LL-gmQ" secondAttribute="bottom" constant="75" id="PRL-f5-HVr"/>
                                                     <constraint firstItem="zjD-Qx-r1t" firstAttribute="centerY" secondItem="8px-LL-gmQ" secondAttribute="centerY" id="Pvu-Kw-4pS"/>
+                                                    <constraint firstItem="DiM-tb-ZQo" firstAttribute="bottom" secondItem="gbb-ia-So9" secondAttribute="bottom" constant="-20" id="YEW-pd-49Q"/>
                                                     <constraint firstItem="HcH-et-aBd" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gbb-ia-So9" secondAttribute="trailing" constant="20" symbolic="YES" id="aCG-Ad-xmq"/>
                                                     <constraint firstItem="B5n-qi-J4s" firstAttribute="top" secondItem="8px-LL-gmQ" secondAttribute="bottom" constant="56" id="aFV-d4-PqH"/>
                                                     <constraint firstItem="q9m-17-7Wy" firstAttribute="bottom" secondItem="gbb-ia-So9" secondAttribute="bottom" id="bqt-Zc-Hjg"/>
@@ -109,7 +125,9 @@
                                                     <constraint firstItem="8px-LL-gmQ" firstAttribute="leading" secondItem="gbb-ia-So9" secondAttribute="leading" id="v1f-e1-dZQ"/>
                                                     <constraint firstItem="zjD-Qx-r1t" firstAttribute="top" secondItem="gbb-ia-So9" secondAttribute="top" id="v4r-Ya-E5C"/>
                                                     <constraint firstItem="q9m-17-7Wy" firstAttribute="leading" secondItem="gbb-ia-So9" secondAttribute="leading" id="vGw-7S-Uod"/>
+                                                    <constraint firstItem="o2d-fh-oC4" firstAttribute="bottom" secondItem="gbb-ia-So9" secondAttribute="bottom" id="x3p-Nf-moS"/>
                                                     <constraint firstItem="HcH-et-aBd" firstAttribute="leading" secondItem="B5n-qi-J4s" secondAttribute="trailing" constant="28" id="yp6-K4-LP1"/>
+                                                    <constraint firstItem="DiM-tb-ZQo" firstAttribute="trailing" secondItem="gbb-ia-So9" secondAttribute="trailing" id="zBF-X6-EfG"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -159,14 +177,16 @@
                         <outlet property="cardNumberLabel" destination="doG-zc-6nE" id="VAf-dL-3kV"/>
                         <outlet property="cardOwnerNameLabel" destination="q9m-17-7Wy" id="oIM-KF-3wt"/>
                         <outlet property="cardTitleLabel" destination="8px-LL-gmQ" id="PO5-aL-GOg"/>
-                        <outlet property="cardView" destination="NLg-Xg-T7B" id="mp8-tp-v0I"/>
+                        <outlet property="cardView" destination="NLg-Xg-T7B" id="LYo-3B-LDg"/>
+                        <outlet property="dateLabel" destination="o2d-fh-oC4" id="Og9-To-y5Y"/>
+                        <outlet property="expirationDateLabel" destination="DiM-tb-ZQo" id="ITF-qm-NQ9"/>
                         <outlet property="headerTitleLabel" destination="MN0-7A-GYa" id="E6Z-Lx-Lt0"/>
                         <outlet property="numberLabel" destination="HcH-et-aBd" id="Quy-ac-wl8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="-2"/>
+            <point key="canvasLocation" x="51.81818181818182" y="-2.510460251046025"/>
         </scene>
     </scenes>
     <resources>

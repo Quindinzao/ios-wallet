@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardOwnerNameLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var cardNumberLabel: UILabel!
+    @IBOutlet weak var expirationDateLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var cardView: UIView!
 
@@ -50,6 +52,18 @@ class ViewController: UIViewController {
         )
         applyFontFamilyLabel(
             label: cardNumberLabel,
+            fontFamily: "Nunito-Regular",
+            fontSize: 14,
+            uppercased: false
+        )
+        applyFontFamilyLabel(
+            label: expirationDateLabel,
+            fontFamily: "Nunito-Regular",
+            fontSize: 8,
+            uppercased: false
+        )
+        applyFontFamilyLabel(
+            label: dateLabel,
             fontFamily: "Nunito-Regular",
             fontSize: 14,
             uppercased: false
