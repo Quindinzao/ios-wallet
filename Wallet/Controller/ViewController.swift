@@ -26,48 +26,7 @@ class ViewController: UIViewController {
 
         setupCardView()
         setupButton()
-        applyFontFamilyLabel(
-            label: headerTitleLabel,
-            fontFamily: "Nunito-Regular",
-            fontSize: 18,
-            uppercased: false
-        )
-        applyFontFamilyLabel(
-            label: cardTitleLabel,
-            fontFamily: "Nunito-Bold",
-            fontSize: 14,
-            uppercased: false
-        )
-        applyFontFamilyLabel(
-            label: cardOwnerNameLabel,
-            fontFamily: "Nunito-Regular",
-            fontSize: 14,
-            uppercased: true
-        )
-        applyFontFamilyLabel(
-            label: numberLabel,
-            fontFamily: "Nunito-Regular",
-            fontSize: 8,
-            uppercased: false
-        )
-        applyFontFamilyLabel(
-            label: cardNumberLabel,
-            fontFamily: "Nunito-Regular",
-            fontSize: 14,
-            uppercased: false
-        )
-        applyFontFamilyLabel(
-            label: expirationDateLabel,
-            fontFamily: "Nunito-Regular",
-            fontSize: 8,
-            uppercased: false
-        )
-        applyFontFamilyLabel(
-            label: dateLabel,
-            fontFamily: "Nunito-Regular",
-            fontSize: 14,
-            uppercased: false
-        )
+        configureLabel()
     }
     
     func setupCardView() {
@@ -79,6 +38,35 @@ class ViewController: UIViewController {
         ]
         cardView.layer.addSublayer(gradientLayer)
         gradientLayer.cornerRadius = 16
+        cardView.layer.masksToBounds = true
+    }
+    
+    func configureLabel() {
+        let labelConfigurations: [
+            (
+                label: UILabel,
+                fontFamily: String,
+                fontSize: CGFloat,
+                uppercased: Bool
+            )
+        ] = [
+            (headerTitleLabel, "Nunito-Regular", 18, false),
+            (cardTitleLabel, "Nunito-Bold", 14, false),
+            (cardOwnerNameLabel, "Nunito-Regular", 14, true),
+            (numberLabel, "Nunito-Regular", 8, false),
+            (cardNumberLabel, "Nunito-Regular", 14, false),
+            (expirationDateLabel, "Nunito-Regular", 8, false),
+            (dateLabel, "Nunito-Regular", 14, false)
+        ]
+        
+        for config in labelConfigurations {
+            applyFontFamilyLabel(
+                label: config.label,
+                fontFamily: config.fontFamily,
+                fontSize: config.fontSize,
+                uppercased: config.uppercased
+            )
+        }
     }
     
     func applyFontFamilyLabel(
