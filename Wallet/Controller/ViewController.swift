@@ -86,7 +86,17 @@ class ViewController: UIViewController {
         addButton.layer.cornerRadius = 4
     }
 
-    @IBAction func addNewCard(_ sender: UIButton) {
+    @IBAction func navigateToNewCard(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.performSegue(withIdentifier: "goToNewCard", sender: self)
+        }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToNewCard" {
+//            segue.destination as! NewCardViewController
+//        }
+//    }
 
 }
