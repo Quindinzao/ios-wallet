@@ -11,10 +11,20 @@ class NewCardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
+        
+        let cardView = CardView()
+        cardView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(cardView)
+        
+        NSLayoutConstraint.activate([
+            cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            cardView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            cardView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            cardView.heightAnchor.constraint(equalToConstant: 224)
+        ])
     }
-    
+
 
     /*
     // MARK: - Navigation

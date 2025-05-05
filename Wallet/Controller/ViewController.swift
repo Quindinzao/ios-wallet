@@ -90,6 +90,7 @@ class ViewController: UIViewController {
         sender.alpha = 0.7
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.performSegue(withIdentifier: "goToNewCard", sender: self)
+            sender.alpha = 1
         }
     }
     
