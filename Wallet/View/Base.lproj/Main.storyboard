@@ -92,8 +92,68 @@
                     <view key="view" contentMode="scaleToFill" id="JdP-dx-Zfs">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="884"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CT8-cL-kFi">
+                                <rect key="frame" x="16" y="0.0" width="408" height="872"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-Cj-Fzx">
+                                        <rect key="frame" x="0.0" y="0.0" width="408" height="824"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfN-6e-XRa" userLabel="Header" customClass="HeaderView" customModule="Wallet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="16" width="408" height="32"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="5fc-jN-NBC"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5np-TM-7Yg" customClass="CardView" customModule="Wallet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="72" width="408" height="224"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="224" id="6di-nw-0pF"/>
+                                                    <constraint firstAttribute="height" constant="224" id="orR-g0-i3v"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" name="backgroundApp"/>
+                                        <constraints>
+                                            <constraint firstItem="JfN-6e-XRa" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="4Z4-bx-wAK"/>
+                                            <constraint firstItem="5np-TM-7Yg" firstAttribute="top" secondItem="JfN-6e-XRa" secondAttribute="bottom" constant="24" id="AXe-ZD-MAM"/>
+                                            <constraint firstItem="5np-TM-7Yg" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="VeG-da-DsQ"/>
+                                            <constraint firstItem="JfN-6e-XRa" firstAttribute="top" secondItem="Rxy-Cj-Fzx" secondAttribute="top" constant="16" id="dAV-oG-YBt"/>
+                                            <constraint firstItem="5np-TM-7Yg" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="fLs-kK-3Ty"/>
+                                            <constraint firstItem="JfN-6e-XRa" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="uLz-U0-k4I"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9V-kP-evC" customClass="ButtonView" customModule="Wallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="824" width="408" height="48"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="nSg-BC-eAk"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Add new card">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="backgroundApp"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="CXL-7B-Y5F"/>
+                                    <constraint firstItem="Rxy-Cj-Fzx" firstAttribute="leading" secondItem="CT8-cL-kFi" secondAttribute="leading" id="YiI-gk-niX"/>
+                                    <constraint firstItem="B9V-kP-evC" firstAttribute="top" secondItem="Rxy-Cj-Fzx" secondAttribute="bottom" id="f0i-SV-ymS"/>
+                                    <constraint firstItem="Rxy-Cj-Fzx" firstAttribute="top" secondItem="CT8-cL-kFi" secondAttribute="top" id="ju5-yo-IcZ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="lKB-oO-f0I"/>
                         <color key="backgroundColor" name="backgroundApp"/>
+                        <constraints>
+                            <constraint firstItem="CT8-cL-kFi" firstAttribute="top" secondItem="JdP-dx-Zfs" secondAttribute="top" id="XGD-Fx-uti"/>
+                            <constraint firstItem="CT8-cL-kFi" firstAttribute="leading" secondItem="lKB-oO-f0I" secondAttribute="leading" constant="16" id="YAb-9Z-FFa"/>
+                            <constraint firstItem="lKB-oO-f0I" firstAttribute="bottom" secondItem="CT8-cL-kFi" secondAttribute="bottom" constant="12" id="ZNq-ZD-CiK"/>
+                            <constraint firstItem="lKB-oO-f0I" firstAttribute="trailing" secondItem="CT8-cL-kFi" secondAttribute="trailing" constant="16" id="xxg-47-qTM"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eY-a5-Rsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

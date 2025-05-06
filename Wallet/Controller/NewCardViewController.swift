@@ -11,31 +11,6 @@ class NewCardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
-        let cardView = CardView()
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(cardView)
-        
-        NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            cardView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            cardView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            cardView.heightAnchor.constraint(equalToConstant: 224)
-        ])
-        
-        let button = ButtonView()
-        button.setTitle("Confirmar", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(button)
-
-        // Constraints
-        NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-        ])
     }
 
 
