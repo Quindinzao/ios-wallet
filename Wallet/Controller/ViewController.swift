@@ -9,21 +9,27 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var addButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.layoutIfNeeded()
-
-        setupButton()
-        headerTitleLabel.font = UIFont(name: "Nunito-Regular", size: 18)
-    }
-
-    func setupButton() {
-        addButton.titleLabel?.font = UIFont(name: "Nunito-SemiBold", size: 14)
-        addButton.layer.cornerRadius = 4
+        
+//        let button = ButtonView()
+//        button.setTitle("Confirmar", for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(button)
+//        
+//        // Action
+//        button.target(forAction: #selector(navigateToNewCard(<#T##sender: UIButton##UIButton#>)), withSender: <#T##Any?#>)
+//
+//        // Constraints
+//        NSLayoutConstraint.activate([
+//            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+//            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+//            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+//        ])
     }
 
     @IBAction func navigateToNewCard(_ sender: UIButton) {

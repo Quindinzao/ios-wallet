@@ -22,23 +22,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v41-YJ-972">
                                         <rect key="frame" x="0.0" y="0.0" width="408" height="704"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciY-zk-tK8" userLabel="Header">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciY-zk-tK8" userLabel="Header" customClass="HeaderView" customModule="Wallet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="408" height="32"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN0-7A-GYa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="61.666666666666664" height="32"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="color"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" name="backgroundApp"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="Ldc-Ta-xnv"/>
-                                                    <constraint firstItem="MN0-7A-GYa" firstAttribute="bottom" secondItem="ciY-zk-tK8" secondAttribute="bottom" id="hPe-XZ-2TI"/>
-                                                    <constraint firstItem="MN0-7A-GYa" firstAttribute="top" secondItem="ciY-zk-tK8" secondAttribute="top" id="i62-Qv-Gzn"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MN0-7A-GYa" secondAttribute="trailing" constant="20" symbolic="YES" id="jnI-3H-iPW"/>
-                                                    <constraint firstItem="MN0-7A-GYa" firstAttribute="leading" secondItem="ciY-zk-tK8" secondAttribute="leading" id="tDf-f6-eGd"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFt-gt-HYb" customClass="CardView" customModule="Wallet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="56" width="408" height="224"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="224" id="95M-lO-24F"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="224" id="tSw-pT-oZd"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -46,18 +42,21 @@
                                         <constraints>
                                             <constraint firstItem="ciY-zk-tK8" firstAttribute="top" secondItem="v41-YJ-972" secondAttribute="top" id="Y08-Cr-xlW"/>
                                             <constraint firstItem="ciY-zk-tK8" firstAttribute="trailing" secondItem="v41-YJ-972" secondAttribute="trailing" id="aDb-p8-g6E"/>
+                                            <constraint firstItem="uFt-gt-HYb" firstAttribute="leading" secondItem="v41-YJ-972" secondAttribute="leading" id="dov-Jw-z4z"/>
+                                            <constraint firstItem="uFt-gt-HYb" firstAttribute="top" secondItem="ciY-zk-tK8" secondAttribute="bottom" constant="24" id="nAx-6S-wEp"/>
                                             <constraint firstItem="ciY-zk-tK8" firstAttribute="leading" secondItem="v41-YJ-972" secondAttribute="leading" id="oqL-os-Y3C"/>
+                                            <constraint firstItem="uFt-gt-HYb" firstAttribute="trailing" secondItem="v41-YJ-972" secondAttribute="trailing" id="r4z-tM-2gV"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0f-Dh-KS3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0f-Dh-KS3" customClass="ButtonView" customModule="Wallet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="704" width="408" height="48"/>
-                                        <color key="backgroundColor" name="backgroundButton"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="VHJ-8e-HtB"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Add new card">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="navigateToNewCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="21x-Wn-vZf"/>
@@ -77,8 +76,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addButton" destination="u0f-Dh-KS3" id="yW1-Cy-Tuh"/>
-                        <outlet property="headerTitleLabel" destination="MN0-7A-GYa" id="E6Z-Lx-Lt0"/>
+                        <outlet property="addButton" destination="u0f-Dh-KS3" id="0YH-zb-KIB"/>
+                        <outlet property="cardView" destination="uFt-gt-HYb" id="xlu-Bj-Feq"/>
                         <segue destination="dy6-c4-vOA" kind="presentation" identifier="goToNewCard" id="i6d-Zm-vxK"/>
                     </connections>
                 </viewController>
@@ -103,14 +102,11 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="backgroundApp">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="backgroundButton">
-            <color red="0.039215686274509803" green="0.3843137254901961" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="color">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -145,4 +145,15 @@ class CardView: UIView {
         super.layoutSubviews()
         gradientLayer.frame = bounds
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
+            
+            // Atualiza as cores do gradiente ao trocar de tema
+            self.gradientLayer.colors = [
+                UIColor(named: "backgroundCardFirst")?.cgColor ?? UIColor.clear.cgColor,
+                UIColor(named: "backgroundCardSecond")?.cgColor ?? UIColor.clear.cgColor
+            ]
+        })
+    }
 }
