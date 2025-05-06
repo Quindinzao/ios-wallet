@@ -52,7 +52,7 @@ class CardView: UIView {
         cardNumberLabel.text = "•••• •••• •••• 1234"
 
         // Nome do titular
-        nameLabel.text = "JOÃO DA SILVA"
+        nameLabel.text = "USERNAME DA SILVA"
 
         // Validade
         expiryText.text = "Expiration date"
