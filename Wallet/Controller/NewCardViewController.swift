@@ -9,11 +9,13 @@ import UIKit
 
 class NewCardViewController: UIViewController {
 
+    @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var cardView: CardView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        headerView.configureHeader(title: "Add New Card", isHidden: false)
         cardView.configureCard(
             title: "Credit",
             number: "•••• •••• •••• 1234",

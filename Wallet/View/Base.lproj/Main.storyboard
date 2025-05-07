@@ -56,7 +56,7 @@
                                             <constraint firstAttribute="height" constant="48" id="VHJ-8e-HtB"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Add new card">
+                                        <state key="normal" title="Add New Card">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -78,7 +78,8 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="u0f-Dh-KS3" id="0YH-zb-KIB"/>
-                        <outlet property="cardView" destination="uFt-gt-HYb" id="xlu-Bj-Feq"/>
+                        <outlet property="cardView" destination="uFt-gt-HYb" id="nKw-vX-gtR"/>
+                        <outlet property="headerView" destination="ciY-zk-tK8" id="Xbx-Zm-XQe"/>
                         <segue destination="dy6-c4-vOA" kind="presentation" identifier="goToNewCard" id="i6d-Zm-vxK"/>
                     </connections>
                 </viewController>
@@ -143,7 +144,7 @@
                                             <constraint firstAttribute="height" constant="48" id="nSg-BC-eAk"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Add new card">
+                                        <state key="normal" title="Add Card">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -168,6 +169,7 @@
                     </view>
                     <connections>
                         <outlet property="cardView" destination="5np-TM-7Yg" id="LXH-If-xQn"/>
+                        <outlet property="headerView" destination="JfN-6e-XRa" id="5jq-tL-MJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eY-a5-Rsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

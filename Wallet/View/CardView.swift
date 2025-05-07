@@ -32,11 +32,7 @@ class CardView: UIView {
         layer.cornerRadius = 16
         clipsToBounds = true
 
-        // Gradiente de fundo
-//        gradientLayer.colors = [
-//            UIColor(named: "backgroundCardFirst")?.cgColor ?? UIColor.clear.cgColor,
-//            UIColor(named: "backgroundCardSecond")?.cgColor ?? UIColor.clear.cgColor
-//        ]
+        // Background Gradient
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         gradientLayer.cornerRadius = 16
@@ -44,13 +40,13 @@ class CardView: UIView {
         
         configureLabel()
         
-        // Imagem do chip
+        // Chip Image
         chipImageView.image = UIImage(named: "chip")
         chipImageView.contentMode = .scaleAspectFit
         chipImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(chipImageView)
 
-        // Imagem de aproximação
+        // Contactless Image
         contactlessImageView.image = UIImage(named: "contactless")
         contactlessImageView.contentMode = .scaleAspectFit
         contactlessImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -157,7 +153,7 @@ class CardView: UIView {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         registerForTraitChanges([UITraitUserInterfaceStyle.self], handler: { (self: Self, previousTraitCollection: UITraitCollection) in
             
-            // Atualiza as cores do gradiente ao trocar de tema
+            // Update card theme
             self.gradientLayer.colors = [
                 UIColor(named: "backgroundCardFirst")?.cgColor ?? UIColor.clear.cgColor,
                 UIColor(named: "backgroundCardSecond")?.cgColor ?? UIColor.clear.cgColor

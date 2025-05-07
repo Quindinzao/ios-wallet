@@ -9,12 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var addButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        headerView.configureHeader(title: "Wallet", isHidden: true)
         cardView.configureCard(
             title: "Credit",
             number: "•••• •••• •••• 1234",

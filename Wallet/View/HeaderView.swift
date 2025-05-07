@@ -9,7 +9,7 @@ import UIKit
 
 class HeaderView: UIView {
     private var titleHeader = UILabel()
-    private var imageReturn = UIImageView()
+    private var imageHeader = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,13 +27,12 @@ class HeaderView: UIView {
         self.backgroundColor = UIColor(named: "backgroundApp")
 
         // Image configuration
-        imageReturn.image = UIImage(systemName: "arrow.left")
-        imageReturn.tintColor = UIColor(named: "color")
-        imageReturn.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageReturn)
+        imageHeader.image = UIImage(systemName: "arrow.left")
+        imageHeader.tintColor = UIColor(named: "color")
+        imageHeader.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(imageHeader)
 
-        // Titile configuration
-        titleHeader.text = "Wallet"
+        // Title configuration
         titleHeader.font = UIFont(name: "Nunito-Regular", size: 18)
         titleHeader.textColor = UIColor(named: "color")
         titleHeader.translatesAutoresizingMaskIntoConstraints = false
@@ -41,13 +40,30 @@ class HeaderView: UIView {
 
         // Constraints
         NSLayoutConstraint.activate([
-            imageReturn.widthAnchor.constraint(equalToConstant: 32),
-            imageReturn.heightAnchor.constraint(equalToConstant: 32),
-            imageReturn.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            imageReturn.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            imageHeader.widthAnchor.constraint(equalToConstant: 32),
+            imageHeader.heightAnchor.constraint(equalToConstant: 32),
+            imageHeader.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            imageHeader.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            titleHeader.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleHeader.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
+    }
+    
+    func configureHeader(
+        title: String,
+        isHidden: Bool
+    ) {
+        titleHeader.text = title
+        imageHeader.isHidden = isHidden
+        
+        if isHidden {
+            NSLayoutConstraint.activate([
+                titleHeader.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                titleHeader.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            ])
+        }
     }
 }
