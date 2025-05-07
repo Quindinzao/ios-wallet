@@ -49,6 +49,5 @@ class HeaderView: UIView {
             titleHeader.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleHeader.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
-
     }
 }

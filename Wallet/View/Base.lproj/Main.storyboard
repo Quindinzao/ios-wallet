@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -114,12 +115,22 @@
                                                     <constraint firstAttribute="height" constant="224" id="orR-g0-i3v"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P1-SL-KJC" customClass="TextInputView" customModule="Wallet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="332" width="408" height="64"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="qec-Ra-7Yt"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" name="backgroundApp"/>
                                         <constraints>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="4Z4-bx-wAK"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="top" secondItem="JfN-6e-XRa" secondAttribute="bottom" constant="24" id="AXe-ZD-MAM"/>
+                                            <constraint firstItem="1P1-SL-KJC" firstAttribute="top" secondItem="5np-TM-7Yg" secondAttribute="bottom" constant="36" id="MRm-EX-n9X"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="VeG-da-DsQ"/>
+                                            <constraint firstItem="1P1-SL-KJC" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="ZFO-hJ-qCr"/>
+                                            <constraint firstItem="1P1-SL-KJC" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="cbd-dG-fEh"/>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="top" secondItem="Rxy-Cj-Fzx" secondAttribute="top" constant="16" id="dAV-oG-YBt"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="fLs-kK-3Ty"/>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="uLz-U0-k4I"/>
@@ -168,5 +179,8 @@
         <namedColor name="backgroundApp">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
