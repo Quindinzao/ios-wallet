@@ -33,30 +33,16 @@ class CardView: UIView {
         clipsToBounds = true
 
         // Gradiente de fundo
-        gradientLayer.colors = [
-            UIColor(named: "backgroundCardFirst")?.cgColor ?? UIColor.clear.cgColor,
-            UIColor(named: "backgroundCardSecond")?.cgColor ?? UIColor.clear.cgColor
-        ]
+//        gradientLayer.colors = [
+//            UIColor(named: "backgroundCardFirst")?.cgColor ?? UIColor.clear.cgColor,
+//            UIColor(named: "backgroundCardSecond")?.cgColor ?? UIColor.clear.cgColor
+//        ]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
         gradientLayer.cornerRadius = 16
         layer.insertSublayer(gradientLayer, at: 14)
         
         configureLabel()
-        
-        // Título do cartão
-        cardTitleText.text = "Credit Card"
-
-        // Número do cartão
-        cardNumberText.text = "Number"
-        cardNumberLabel.text = "•••• •••• •••• 1234"
-
-        // Nome do titular
-        nameLabel.text = "USERNAME DA SILVA"
-
-        // Validade
-        expiryText.text = "Expiration date"
-        expiryLabel.text = "12/26"
         
         // Imagem do chip
         chipImageView.image = UIImage(named: "chip")
@@ -97,6 +83,28 @@ class CardView: UIView {
             expiryLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             expiryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
         ])
+    }
+    
+    func configureCard(
+        title: String,
+        number: String,
+        name: String,
+        expiry: String,
+        firstColor: UIColor,
+        secondColor: UIColor
+    ) {
+        cardTitleText.text = title
+        cardNumberText.text = "Number"
+        cardNumberLabel.text = number
+        nameLabel.text = name.uppercased()
+        expiryText.text = "Expiration date"
+        expiryLabel.text = expiry
+
+        gradientLayer.colors = [
+            firstColor.cgColor,
+            secondColor.cgColor
+        ]
+        gradientLayer.setNeedsDisplay()
     }
     
     func configureLabel() {

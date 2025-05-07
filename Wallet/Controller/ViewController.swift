@@ -9,11 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var addButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cardView.configureCard(
+            title: "Credit",
+            number: "•••• •••• •••• 1234",
+            name: "João V. Fernandes",
+            expiry: "12/26",
+            firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,
+            secondColor: UIColor(named: "backgroundCardSecond") ?? .purple
+        )
     }
 
     @IBAction func navigateToNewCard(_ sender: UIButton) {

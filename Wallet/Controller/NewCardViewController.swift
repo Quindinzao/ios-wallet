@@ -9,8 +9,19 @@ import UIKit
 
 class NewCardViewController: UIViewController {
 
+    @IBOutlet weak var cardView: CardView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        cardView.configureCard(
+            title: "Credit",
+            number: "•••• •••• •••• 1234",
+            name: "João V. Fernandes",
+            expiry: "12/26",
+            firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,
+            secondColor: UIColor(named: "backgroundCardSecond") ?? .purple
+        )
     }
 
 

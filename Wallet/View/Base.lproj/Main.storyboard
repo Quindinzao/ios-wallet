@@ -166,6 +166,9 @@
                             <constraint firstItem="lKB-oO-f0I" firstAttribute="trailing" secondItem="CT8-cL-kFi" secondAttribute="trailing" constant="16" id="xxg-47-qTM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cardView" destination="5np-TM-7Yg" id="LXH-If-xQn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eY-a5-Rsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
