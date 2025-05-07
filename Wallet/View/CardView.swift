@@ -145,6 +145,19 @@ class CardView: UIView {
         addSubview(label)
     }
 
+    func updateText(text: String, tag: Int) {
+        switch tag {
+        case 1:
+            nameLabel.text = text
+        case 2:
+            cardNumberLabel.text = text
+        case 3:
+            expiryLabel.text = text
+        default:
+            nameLabel.text = text
+        }
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds

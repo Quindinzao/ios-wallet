@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -118,15 +117,23 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P1-SL-KJC" customClass="TextInputView" customModule="Wallet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="332" width="408" height="64"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="qec-Ra-7Yt"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1w-PP-hNg" customClass="TextInputView" customModule="Wallet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="412" width="408" height="64"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="fyT-82-W19"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" name="backgroundApp"/>
                                         <constraints>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="4Z4-bx-wAK"/>
+                                            <constraint firstItem="p1w-PP-hNg" firstAttribute="leading" secondItem="1P1-SL-KJC" secondAttribute="leading" id="5RC-2o-g6S"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="top" secondItem="JfN-6e-XRa" secondAttribute="bottom" constant="24" id="AXe-ZD-MAM"/>
                                             <constraint firstItem="1P1-SL-KJC" firstAttribute="top" secondItem="5np-TM-7Yg" secondAttribute="bottom" constant="36" id="MRm-EX-n9X"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="VeG-da-DsQ"/>
@@ -135,6 +142,8 @@
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="top" secondItem="Rxy-Cj-Fzx" secondAttribute="top" constant="16" id="dAV-oG-YBt"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="fLs-kK-3Ty"/>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="uLz-U0-k4I"/>
+                                            <constraint firstItem="p1w-PP-hNg" firstAttribute="top" secondItem="1P1-SL-KJC" secondAttribute="bottom" constant="16" id="zAi-l5-5vF"/>
+                                            <constraint firstItem="p1w-PP-hNg" firstAttribute="trailing" secondItem="1P1-SL-KJC" secondAttribute="trailing" id="zvz-mL-Bes"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9V-kP-evC" customClass="ButtonView" customModule="Wallet" customModuleProvider="target">
@@ -170,6 +179,8 @@
                     <connections>
                         <outlet property="cardView" destination="5np-TM-7Yg" id="LXH-If-xQn"/>
                         <outlet property="headerView" destination="JfN-6e-XRa" id="5jq-tL-MJ9"/>
+                        <outlet property="textInputCardNumber" destination="p1w-PP-hNg" id="yQL-dm-rcH"/>
+                        <outlet property="textInputName" destination="1P1-SL-KJC" id="I0l-HZ-qSj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eY-a5-Rsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -184,8 +195,5 @@
         <namedColor name="backgroundApp">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

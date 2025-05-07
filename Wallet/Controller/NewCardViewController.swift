@@ -11,6 +11,8 @@ class NewCardViewController: UIViewController {
 
     @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var cardView: CardView!
+    @IBOutlet weak var textInputName: TextInputView!
+    @IBOutlet weak var textInputCardNumber: TextInputView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +26,20 @@ class NewCardViewController: UIViewController {
             firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,
             secondColor: UIColor(named: "backgroundCardSecond") ?? .purple
         )
+        
+        textInputName.configureTextInput(label: "Name", placeholder: "Type your name", isCapitalized: true)
+        textInputName.textField.tag = 1
+        textInputName.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+
+        textInputCardNumber.configureTextInput(label: "Number", placeholder: "Type your card number", isCapitalized: false)
+        textInputCardNumber.textField.tag = 2
+        textInputCardNumber.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
     }
 
+    @objc private func textDidChange(_ sender: UITextField) {
+        let typedName = sender.text ?? ""
+        cardView.updateText(text: typedName, tag: sender.tag)
+    }
 
     /*
     // MARK: - Navigation
