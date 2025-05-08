@@ -18,6 +18,9 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
 
         headerView.configureHeader(title: "Add New Card", isHidden: false)
         headerView.delegate = self
@@ -52,6 +55,10 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
     @objc private func textDidChange(_ sender: UITextField) {
         let typedName = sender.text ?? ""
         cardView.updateText(text: typedName, tag: sender.tag)
+    }
+
+    @objc func hideKeyboard() {
+        view.endEditing(true)
     }
     
     func didTapBackButton() {

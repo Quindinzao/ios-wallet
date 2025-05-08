@@ -73,9 +73,9 @@ class CardView: UIView {
             cardNumberLabel.leadingAnchor.constraint(equalTo: chipImageView.trailingAnchor, constant: 28),
             cardNumberLabel.topAnchor.constraint(equalTo: cardTitleText.bottomAnchor, constant: 76),
             
-            cvvText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+            cvvText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             cvvText.topAnchor.constraint(equalTo: cardTitleText.bottomAnchor, constant: 64),
-            cvvLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+            cvvLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             cvvLabel.topAnchor.constraint(equalTo: cardTitleText.bottomAnchor, constant: 76),
 
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
