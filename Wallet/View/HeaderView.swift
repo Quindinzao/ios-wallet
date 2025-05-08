@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol HeaderViewDelegate: AnyObject {
+    func didTapBackButton()
+}
+
 class HeaderView: UIView {
     private var titleHeader = UILabel()
-    private var imageHeader = UIImageView()
+    private var imageHeader = UIButton()
+    weak var delegate: HeaderViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,9 +32,10 @@ class HeaderView: UIView {
         self.backgroundColor = UIColor(named: "backgroundApp")
 
         // Image configuration
-        imageHeader.image = UIImage(systemName: "arrow.left")
+        imageHeader.setImage(UIImage(systemName: "arrow.left"), for: .normal)
         imageHeader.tintColor = UIColor(named: "color")
         imageHeader.translatesAutoresizingMaskIntoConstraints = false
+        imageHeader.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
         self.addSubview(imageHeader)
 
         // Title configuration
@@ -65,5 +71,9 @@ class HeaderView: UIView {
                 titleHeader.trailingAnchor.constraint(equalTo: self.trailingAnchor)
             ])
         }
+    }
+    
+    @objc func handleBackButton() {
+        delegate?.didTapBackButton()
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewCardViewController: UIViewController {
+class NewCardViewController: UIViewController, HeaderViewDelegate {
 
     @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var cardView: CardView!
@@ -20,6 +20,8 @@ class NewCardViewController: UIViewController {
         super.viewDidLoad()
 
         headerView.configureHeader(title: "Add New Card", isHidden: false)
+        headerView.delegate = self
+
         cardView.configureCard(
             title: "Credit",
             number: "",
@@ -29,7 +31,7 @@ class NewCardViewController: UIViewController {
             firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,
             secondColor: UIColor(named: "backgroundCardSecond") ?? .purple
         )
-        
+
         nameTextInput.configureTextInput(label: "Name", placeholder: "Type your name", isCapitalized: true)
         nameTextInput.textField.tag = 1
         nameTextInput.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
@@ -51,15 +53,8 @@ class NewCardViewController: UIViewController {
         let typedName = sender.text ?? ""
         cardView.updateText(text: typedName, tag: sender.tag)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func didTapBackButton() {
+        dismiss(animated: true, completion: nil)
     }
-    */
-
 }
