@@ -11,8 +11,10 @@ class CardView: UIView {
     private let cardTitleText = UILabel()
     private let cardNumberLabel = UILabel()
     private let cardNumberText = UILabel()
+    private let cvvLabel = UILabel()
+    private let cvvText = UILabel()
     private let nameLabel = UILabel()
-    private let expiryLabel = UILabel()
+    private let expiresEndLabel = UILabel()
     private let expiryText = UILabel()
     private let chipImageView = UIImageView()
     private let contactlessImageView = UIImageView()
@@ -70,20 +72,26 @@ class CardView: UIView {
             cardNumberText.topAnchor.constraint(equalTo: cardTitleText.bottomAnchor, constant: 64),
             cardNumberLabel.leadingAnchor.constraint(equalTo: chipImageView.trailingAnchor, constant: 28),
             cardNumberLabel.topAnchor.constraint(equalTo: cardTitleText.bottomAnchor, constant: 76),
+            
+            cvvText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+            cvvText.topAnchor.constraint(equalTo: cardTitleText.bottomAnchor, constant: 64),
+            cvvLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+            cvvLabel.topAnchor.constraint(equalTo: cardTitleText.bottomAnchor, constant: 76),
 
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
 
             expiryText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             expiryText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -44),
-            expiryLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            expiryLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
+            expiresEndLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            expiresEndLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
         ])
     }
     
     func configureCard(
         title: String,
         number: String,
+        cvv: String,
         name: String,
         expiry: String,
         firstColor: UIColor,
@@ -93,8 +101,10 @@ class CardView: UIView {
         cardNumberText.text = "Number"
         cardNumberLabel.text = number
         nameLabel.text = name.uppercased()
-        expiryText.text = "Expiration date"
-        expiryLabel.text = expiry
+        cvvText.text = "CVV"
+        cvvLabel.text = cvv
+        expiryText.text = "Expires end"
+        expiresEndLabel.text = expiry
 
         gradientLayer.colors = [
             firstColor.cgColor,
@@ -115,8 +125,10 @@ class CardView: UIView {
             (cardTitleText, "Nunito-Bold", 14, false),
             (cardNumberLabel, "Nunito-Regular", 14, false),
             (cardNumberText, "Nunito-Bold", 8, false),
+            (cvvLabel, "Nunito-Regular", 14, false),
+            (cvvText, "Nunito-Bold", 8, false),
             (nameLabel, "Nunito-Regular", 14, true),
-            (expiryLabel, "Nunito-Regular", 14, false),
+            (expiresEndLabel, "Nunito-Regular", 14, false),
             (expiryText, "Nunito-Regular", 8, false)
         ]
         
@@ -152,7 +164,9 @@ class CardView: UIView {
         case 2:
             cardNumberLabel.text = text
         case 3:
-            expiryLabel.text = text
+            expiresEndLabel.text = text
+        case 4:
+            cvvLabel.text = text
         default:
             nameLabel.text = text
         }

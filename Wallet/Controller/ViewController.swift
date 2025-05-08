@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         cardView.configureCard(
             title: "Credit",
             number: "•••• •••• •••• 1234",
+            cvv: "111",
             name: "João V. Fernandes",
             expiry: "12/26",
             firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,

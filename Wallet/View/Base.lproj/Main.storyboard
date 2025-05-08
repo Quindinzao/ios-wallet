@@ -129,10 +129,33 @@
                                                     <constraint firstAttribute="height" constant="64" id="fyT-82-W19"/>
                                                 </constraints>
                                             </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6c4-Oy-P3c">
+                                                <rect key="frame" x="0.0" y="492" width="408" height="64"/>
+                                                <subviews>
+                                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="3WW-w3-LdM" customClass="TextInputView" customModule="Wallet" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="196" height="64"/>
+                                                        <color key="backgroundColor" name="AccentColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="64" id="Lnr-te-HH5"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOd-WX-b65" customClass="TextInputView" customModule="Wallet" customModuleProvider="target">
+                                                        <rect key="frame" x="212" y="0.0" width="196" height="64"/>
+                                                        <color key="backgroundColor" name="AccentColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="64" id="JGE-51-USC"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="CwZ-tj-KWO"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" name="backgroundApp"/>
                                         <constraints>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="4Z4-bx-wAK"/>
+                                            <constraint firstItem="6c4-Oy-P3c" firstAttribute="top" secondItem="p1w-PP-hNg" secondAttribute="bottom" constant="16" id="546-2c-dhu"/>
                                             <constraint firstItem="p1w-PP-hNg" firstAttribute="leading" secondItem="1P1-SL-KJC" secondAttribute="leading" id="5RC-2o-g6S"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="top" secondItem="JfN-6e-XRa" secondAttribute="bottom" constant="24" id="AXe-ZD-MAM"/>
                                             <constraint firstItem="1P1-SL-KJC" firstAttribute="top" secondItem="5np-TM-7Yg" secondAttribute="bottom" constant="36" id="MRm-EX-n9X"/>
@@ -141,7 +164,9 @@
                                             <constraint firstItem="1P1-SL-KJC" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="cbd-dG-fEh"/>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="top" secondItem="Rxy-Cj-Fzx" secondAttribute="top" constant="16" id="dAV-oG-YBt"/>
                                             <constraint firstItem="5np-TM-7Yg" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="fLs-kK-3Ty"/>
+                                            <constraint firstItem="6c4-Oy-P3c" firstAttribute="leading" secondItem="Rxy-Cj-Fzx" secondAttribute="leading" id="mbU-wq-f1V"/>
                                             <constraint firstItem="JfN-6e-XRa" firstAttribute="trailing" secondItem="Rxy-Cj-Fzx" secondAttribute="trailing" id="uLz-U0-k4I"/>
+                                            <constraint firstAttribute="trailing" secondItem="6c4-Oy-P3c" secondAttribute="trailing" id="yAg-h1-zC6"/>
                                             <constraint firstItem="p1w-PP-hNg" firstAttribute="top" secondItem="1P1-SL-KJC" secondAttribute="bottom" constant="16" id="zAi-l5-5vF"/>
                                             <constraint firstItem="p1w-PP-hNg" firstAttribute="trailing" secondItem="1P1-SL-KJC" secondAttribute="trailing" id="zvz-mL-Bes"/>
                                         </constraints>
@@ -177,15 +202,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardNumberTextInput" destination="p1w-PP-hNg" id="yQL-dm-rcH"/>
                         <outlet property="cardView" destination="5np-TM-7Yg" id="LXH-If-xQn"/>
+                        <outlet property="cvvTextField" destination="zOd-WX-b65" id="LEJ-0V-Xgf"/>
+                        <outlet property="expiresEndTextField" destination="3WW-w3-LdM" id="Wb1-Mh-taX"/>
                         <outlet property="headerView" destination="JfN-6e-XRa" id="5jq-tL-MJ9"/>
-                        <outlet property="textInputCardNumber" destination="p1w-PP-hNg" id="yQL-dm-rcH"/>
-                        <outlet property="textInputName" destination="1P1-SL-KJC" id="I0l-HZ-qSj"/>
+                        <outlet property="nameTextInput" destination="1P1-SL-KJC" id="I0l-HZ-qSj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eY-a5-Rsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="-3"/>
+            <point key="canvasLocation" x="825.00000000000011" y="-3.1380753138075317"/>
         </scene>
     </scenes>
     <resources>
