@@ -16,11 +16,29 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
     @IBOutlet weak var expiresEndTextField: TextInputView!
     @IBOutlet weak var cvvTextField: TextInputView!
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
 
         headerView.configureHeader(title: "Add New Card", isHidden: false)
         headerView.delegate = self
@@ -59,6 +77,24 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
 
     @objc func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
+        }
+        
+        let keyboardHeight = keyboardFrame.height
+        
+        if (view.frame.origin.y == 0) {
+            view.frame.origin.y -= keyboardHeight / 2
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        if (view.frame.origin.y != 0) {
+            view.frame.origin.y = 0
+        }
     }
     
     func didTapBackButton() {
