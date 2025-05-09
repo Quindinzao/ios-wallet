@@ -66,9 +66,12 @@ class TextInputView: UIView {
     func configureTextInput(
         label: String,
         placeholder: String,
-        isCapitalized: Bool?
+        isCapitalized: Bool? = false,
+        keyboardType: UIKeyboardType? = .default
     ) {
         labelTextField.text = label
+        
+        textField.keyboardType = keyboardType!
 
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(named: "colorLabel") ?? .red,

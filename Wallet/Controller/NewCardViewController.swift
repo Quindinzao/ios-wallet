@@ -57,22 +57,23 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
         nameTextInput.textField.tag = 1
         nameTextInput.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
 
-        cardNumberTextInput.configureTextInput(label: "Number", placeholder: "Type your card number", isCapitalized: false)
+        cardNumberTextInput.configureTextInput(label: "Number", placeholder: "Type your card number", keyboardType: .numberPad)
         cardNumberTextInput.textField.tag = 2
         cardNumberTextInput.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         
-        expiresEndTextField.configureTextInput(label: "Expires end", placeholder: "MM/YY", isCapitalized: false)
+        expiresEndTextField.configureTextInput(label: "Expires end", placeholder: "MM/YY", keyboardType: .numberPad)
         expiresEndTextField.textField.tag = 3
         expiresEndTextField.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
         
-        cvvTextField.configureTextInput(label: "CVV", placeholder: "Type your card CVV", isCapitalized: false)
+        cvvTextField.configureTextInput(label: "CVV", placeholder: "Type your card CVV", keyboardType: .numberPad)
         cvvTextField.textField.tag = 4
         cvvTextField.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
     }
 
     @objc private func textDidChange(_ sender: UITextField) {
-        let typedName = sender.text ?? ""
-        cardView.updateText(text: typedName, tag: sender.tag)
+        guard let text = sender.text else { return }
+        sender.text = applyMask(to: text, tag: sender.tag)
+        cardView.updateText(text: sender.text ?? "", tag: sender.tag)
     }
 
     @objc func hideKeyboard() {
@@ -99,5 +100,42 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
     
     func didTapBackButton() {
         dismiss(animated: true, completion: nil)
+    }
+
+    private func applyMask(to text: String, tag: Int) -> String {
+        let digits = text.replacingOccurrences(of: "\\D", with: "", options: .regularExpression)
+
+        switch tag {
+        case 2:
+            return applyNumberCardMask(digits)
+        case 3:
+            return applyExpiryMask(digits)
+        case 4:
+            return String(text.prefix(3))
+        default:
+            return text
+        }
+    }
+
+    private func applyNumberCardMask(_ digits: String) -> String {
+        var result = ""
+        for (index, char) in digits.enumerated() {
+            if index != 0 && index % 4 == 0 {
+                result.append(" ")
+            }
+            result.append(char)
+        }
+        return String(result.prefix(19))
+    }
+
+    private func applyExpiryMask(_ digits: String) -> String {
+        var result = ""
+        for (index, char) in digits.enumerated() {
+            if index == 2 {
+                result.append("/")
+            }
+            result.append(char)
+        }
+        return String(result.prefix(5))
     }
 }
