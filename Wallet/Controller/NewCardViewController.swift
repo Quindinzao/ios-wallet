@@ -168,37 +168,51 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
     
     private func validateCardNumber(_ cardNumberStr: String) -> Bool {
         let formattedCardNumber = cardNumberStr.replacingOccurrences(of: " ", with: "")
-        if (formattedCardNumber.count != 16) {
+        guard formattedCardNumber.count == 16, formattedCardNumber.allSatisfy({ $0.isNumber }) else {
             return false
         }
         
-        var oddPosition: [Int] = []
-        var evenPosition: [Int] = []
-        var oddPositionFormatted: [Int] = []
-
-        for (position, item) in formattedCardNumber.enumerated() {
-            let digit = Int(String(item))!
-            if ((position + 1) % 2 == 1) {
-                oddPosition.append(digit)
+        let digits = formattedCardNumber.reversed().compactMap { Int(String($0)) }
+        
+        var sum = 0
+        
+        for (index, digit) in digits.enumerated() {
+            if (index % 2 == 1) {
+                let doubled = digit * 2
+                sum += doubled > 9 ? doubled - 9 : doubled
             } else {
-                evenPosition.append(digit)
+                sum += digit
             }
         }
         
-        for (_, item) in oddPosition.enumerated() {
-            let digit = item * 2
-            let digitHelper = String(digit).count == 1 ? String(format: "%02d", digit) : String(digit)
-            
-            let firstChar = Int(String(digitHelper.first!))!
-            let secondChar = Int(String(digitHelper.last!))!
-
-            oddPositionFormatted.append(firstChar)
-            oddPositionFormatted.append(secondChar)
-        }
-    
-        let sum = oddPositionFormatted.reduce(0, +) + evenPosition.reduce(0, +)
-        
         return sum % 10 == 0
+    }
+    
+    private func validateDate(_ dateStr: String) -> Bool {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/yy"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        guard let cardDate = formatter.date(from: dateStr) else {
+            return false
+        }
+        
+        let calendar = Calendar.current
+        
+        var components = calendar.dateComponents([.year, .month], from: cardDate)
+        components.day = calendar.range(of: .day, in: .month, for: cardDate)?.count
+        
+        guard let cardExpirityDate = calendar.date(from: components) else {
+            return false
+        }
+        
+        let today = Date()
+    
+        return cardExpirityDate >= today
+    }
+    
+    private func validatePerSize(_ size: Int, _ text: String) -> Bool {
+        return text.count >= size
     }
     
     private func showAlert(title: String, message: String) {
@@ -208,8 +222,15 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
     }
     
     @IBAction func saveCard(_ sender: ButtonView) {
-        let validateCardNumberBool = validateCardNumber(cardNumberTextInput.textField.text!)
-        if validateCardNumberBool {
+        if (!validatePerSize(3, nameTextInput.textField.text!)) {
+            showAlert(title: "Oops!", message: "This is not a valid name. Please try again.")
+        } else if (!validateCardNumber(cardNumberTextInput.textField.text!)) {
+            showAlert(title: "Oops!", message: "This is not a valid card number. Please try again.")
+        } else if (!validatePerSize(5, expiresEndTextField.textField.text!) || !validateDate(expiresEndTextField.textField.text!)) {
+            showAlert(title: "Oops!", message: "This is not a valid date. Please try again.")
+        } else if (!validatePerSize(3, cvvTextField.textField.text!)) {
+            showAlert(title: "Oops!", message: "This is not a valid CVV. Please try again.")
+        } else {
             let card = Card(
                 name: nameTextInput.textField.text ?? "",
                 cardNumber: cardNumberTextInput.textField.text ?? "",
@@ -219,8 +240,6 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
                
            delegate?.didAddCard(card)
            dismiss(animated: true, completion: nil)
-        } else {
-            showAlert(title: "Oops!", message: "This is not a valid card number. Please try again.")
         }
     }
 }
