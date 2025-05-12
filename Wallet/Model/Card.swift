@@ -7,16 +7,32 @@
 
 import Foundation
 
-class Card {
+struct Card {
     var name: String
-    var number: String
-    var expirationDate: String
+    var cardNumber: String
+    var expiresEnd: String
     var cvv: String
     
-    init(name: String, number: String, expirationDate: String, cvv: String) {
+    init(name: String, cardNumber: String, expiresEnd: String, cvv: String) {
         self.name = name
-        self.number = number
-        self.expirationDate = expirationDate
+        self.cardNumber = cardNumber
+        self.expiresEnd = expiresEnd
         self.cvv = cvv
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func getCardNumber() -> String {
+        return cardNumber
+    }
+    
+    func getExpiresEnd() -> String {
+        return expiresEnd
+    }
+    
+    func getCvv() -> String {
+        return cvv
     }
 }

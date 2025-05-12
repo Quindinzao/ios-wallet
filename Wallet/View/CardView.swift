@@ -15,7 +15,7 @@ class CardView: UIView {
     private let cvvText = UILabel()
     private let nameLabel = UILabel()
     private let expiresEndLabel = UILabel()
-    private let expiryText = UILabel()
+    private let expiresEndText = UILabel()
     private let chipImageView = UIImageView()
     private let contactlessImageView = UIImageView()
     private let gradientLayer = CAGradientLayer()
@@ -81,8 +81,8 @@ class CardView: UIView {
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
 
-            expiryText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            expiryText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -44),
+            expiresEndText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            expiresEndText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -44),
             expiresEndLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             expiresEndLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24)
         ])
@@ -90,21 +90,21 @@ class CardView: UIView {
     
     func configureCard(
         title: String,
-        number: String,
+        numberCard: String,
         cvv: String,
         name: String,
-        expiry: String,
+        expiresEnd: String,
         firstColor: UIColor,
         secondColor: UIColor
     ) {
         cardTitleText.text = title
         cardNumberText.text = "Number"
-        cardNumberLabel.text = number
+        cardNumberLabel.text = numberCard
         nameLabel.text = name.uppercased()
         cvvText.text = "CVV"
         cvvLabel.text = cvv
-        expiryText.text = "Expires end"
-        expiresEndLabel.text = expiry
+        expiresEndText.text = "Expires end"
+        expiresEndLabel.text = expiresEnd
 
         gradientLayer.colors = [
             firstColor.cgColor,
@@ -129,7 +129,7 @@ class CardView: UIView {
             (cvvText, "Nunito-Bold", 8, false),
             (nameLabel, "Nunito-Regular", 14, true),
             (expiresEndLabel, "Nunito-Regular", 14, false),
-            (expiryText, "Nunito-Regular", 8, false)
+            (expiresEndText, "Nunito-Regular", 8, false)
         ]
         
         for config in labelConfigurations {

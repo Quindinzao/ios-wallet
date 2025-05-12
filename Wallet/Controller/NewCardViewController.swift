@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol NewCardViewControllerDelegate: AnyObject {
+    func didAddCard(_ card: Card)
+}
+
 class NewCardViewController: UIViewController, HeaderViewDelegate {
 
     @IBOutlet weak var headerView: HeaderView!
@@ -15,6 +19,9 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
     @IBOutlet weak var cardNumberTextInput: TextInputView!
     @IBOutlet weak var expiresEndTextField: TextInputView!
     @IBOutlet weak var cvvTextField: TextInputView!
+    weak var delegate: NewCardViewControllerDelegate?
+    
+    private var card = Card(name: "", cardNumber: "", expiresEnd: "", cvv: "")
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -43,15 +50,7 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
         headerView.configureHeader(title: "Add New Card", isHidden: false)
         headerView.delegate = self
 
-        cardView.configureCard(
-            title: "Credit",
-            number: "",
-            cvv: "",
-            name: "",
-            expiry: "",
-            firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,
-            secondColor: UIColor(named: "backgroundCardSecond") ?? .purple
-        )
+        updateCardView()
 
         nameTextInput.configureTextInput(label: "Name", placeholder: "Type your name", isCapitalized: true)
         nameTextInput.textField.tag = 1
@@ -69,11 +68,39 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
         cvvTextField.textField.tag = 4
         cvvTextField.textField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
     }
+    
+    func updateCardView() {
+        cardView.configureCard(
+            title: "Credit",
+            numberCard: card.getCardNumber(),
+            cvv: card.getCvv(),
+            name: card.getName(),
+            expiresEnd: card.getExpiresEnd(),
+            firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,
+            secondColor: UIColor(named: "backgroundCardSecond") ?? .purple
+        )
+    }
 
     @objc private func textDidChange(_ sender: UITextField) {
         guard let text = sender.text else { return }
-        sender.text = applyMask(to: text, tag: sender.tag)
-        cardView.updateText(text: sender.text ?? "", tag: sender.tag)
+        let maskedText = applyMask(to: text, tag: sender.tag)
+        sender.text = maskedText
+        
+        switch sender.tag {
+        case 1:
+            card.name = maskedText
+        case 2:
+            card.cardNumber = maskedText
+        case 3:
+            card.expiresEnd = maskedText
+        case 4:
+            card.cvv = maskedText
+        default:
+            break
+        }
+
+        cardView.updateText(text: maskedText, tag: sender.tag)
+        updateCardView()
     }
 
     @objc func hideKeyboard() {
@@ -137,5 +164,63 @@ class NewCardViewController: UIViewController, HeaderViewDelegate {
             result.append(char)
         }
         return String(result.prefix(5))
+    }
+    
+    private func validateCardNumber(_ cardNumberStr: String) -> Bool {
+        let formattedCardNumber = cardNumberStr.replacingOccurrences(of: " ", with: "")
+        if (formattedCardNumber.count != 16) {
+            return false
+        }
+        
+        var oddPosition: [Int] = []
+        var evenPosition: [Int] = []
+        var oddPositionFormatted: [Int] = []
+
+        for (position, item) in formattedCardNumber.enumerated() {
+            let digit = Int(String(item))!
+            if ((position + 1) % 2 == 1) {
+                oddPosition.append(digit)
+            } else {
+                evenPosition.append(digit)
+            }
+        }
+        
+        for (_, item) in oddPosition.enumerated() {
+            let digit = item * 2
+            let digitHelper = String(digit).count == 1 ? String(format: "%02d", digit) : String(digit)
+            
+            let firstChar = Int(String(digitHelper.first!))!
+            let secondChar = Int(String(digitHelper.last!))!
+
+            oddPositionFormatted.append(firstChar)
+            oddPositionFormatted.append(secondChar)
+        }
+    
+        let sum = oddPositionFormatted.reduce(0, +) + evenPosition.reduce(0, +)
+        
+        return sum % 10 == 0
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func saveCard(_ sender: ButtonView) {
+        let validateCardNumberBool = validateCardNumber(cardNumberTextInput.textField.text!)
+        if validateCardNumberBool {
+            let card = Card(
+                name: nameTextInput.textField.text ?? "",
+                cardNumber: cardNumberTextInput.textField.text ?? "",
+                expiresEnd: expiresEndTextField.textField.text ?? "",
+                cvv: cvvTextField.textField.text ?? ""
+            )
+               
+           delegate?.didAddCard(card)
+           dismiss(animated: true, completion: nil)
+        } else {
+            showAlert(title: "Oops!", message: "This is not a valid card number. Please try again.")
+        }
     }
 }

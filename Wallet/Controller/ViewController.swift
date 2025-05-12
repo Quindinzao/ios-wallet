@@ -7,22 +7,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, NewCardViewControllerDelegate {
     @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var addButton: UIButton!
+    
+    let card = Card(name: "", cardNumber: "", expiresEnd: "", cvv: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         headerView.configureHeader(title: "Wallet", isHidden: true)
-        cardView.configureCard(
+        didAddCard(card)
+    }
+    
+    func didAddCard(_ card: Card) {
+        self.cardView.configureCard(
             title: "Credit",
-            number: "•••• •••• •••• 1234",
-            cvv: "111",
-            name: "João V. Fernandes",
-            expiry: "12/26",
+            numberCard: card.cardNumber,
+            cvv: card.cvv,
+            name: card.name,
+            expiresEnd: card.expiresEnd,
             firstColor: UIColor(named: "backgroundCardFirst") ?? .blue,
             secondColor: UIColor(named: "backgroundCardSecond") ?? .purple
         )
@@ -36,10 +41,11 @@ class ViewController: UIViewController {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToNewCard" {
-//            segue.destination as! NewCardViewController
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToNewCard" {
+            let destinationVC = segue.destination as! NewCardViewController
+            destinationVC.delegate = self
+        }
+    }
 
 }
